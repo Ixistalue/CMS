@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Header CMS</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .header {
+      background-color: #e7dde4; /* Сірий фон */
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    .header-left {
+      font-weight: bold;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .notification {
+      position: relative;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .notification::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 7px;
+      width: 10px;
+      height: 10px;
+      background-color: orange;
+      border-radius: 50%;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background-color:white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgb(146, 237, 239);
+    }
+    .avatar_icon{
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+
+    }
+    .bell{
+      padding-right:5px;
+      padding-top:5px;
+      width: 28px;
+      height: 28px;
+    }
+
+    /*sidebar styles*/
+    .sidebar {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            width: 200px;
+            min-height: 100vh;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background-color: #e9ecef;
+        }
+        /*-----/*/
+        body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/*----*/
+.container{
+  padding-left:50px;
+  padding-right:50px; 
+  width:100%;
+}
+
+.table-container {
+            overflow-x: auto;
+        }
+
+        table {
+
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .options {
+          justify-content: center;
+            display: flex;
+            gap: 5px;
+        }
+
+        .options button {
+            padding: 5px 8px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+
+        }
+
+        .status-active {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #4CAF50; /* Зелений */
+        }
+
+        .status-inactive {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd; /* Сірий */
+        }
+
+        .add-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            float: right;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pagination button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+
+/*Modal styles/*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Вміст модального вікна */
+  .modal-content {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+    animation: slideIn 0.4s ease;
+  }
+
+  /* Анімації */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Кнопка закриття */
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .close:hover {
+    color: #000;
+  }
+
+  /* Стилі для заголовка */
+  .modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  /* Стилі для форми */
+  form label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  form label select,
+  form label input[type="text"],
+  form label input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  /* Кнопки */
+  #cancelBtn, #createBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #cancelBtn {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  #cancelBtn:hover {
+    background-color: #e0e0e0;
+  }
+
+  #createBtn {
+    background-color: #007BFF;
+    color: white;
+  }
+
+  #createBtn:hover {
+    background-color: #0056b3;
+  }
+
+
+
+
+
+  /*Игкпук ьутгБургер меню*/
+  .burger-btn {
+    display: none;
+    font-size: 24px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    z-index: 999;
+}
+
+@media (max-width: 3400px) {
+    .sidebar {
+        padding-top:75px;
+        display: none;
+        position: absolute;
+        background-color: #f8f9fa;
+        width: 200px;
+        height: 100vh;
+        top: 1000;
+        left: 0;
+        z-index: 998;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    }
+
+    .burger-btn {
+        top: 50px;
+        display: block;
+    }
+}
+
+
+
+
+/*header improvements*/
+/* Основні стилі для dropdown */
+.notification-dropdown,
+.profile-dropdown {
+  position: absolute;
+  top: 47px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 200px;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+/* Для dropdown профілю */
+.profile-dropdown {
+  width: 150px;
+  right: 0;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+.dropdown-item:hover {
+  transition-duration: 100000ms;
+  background-color: #f0f0f0;
+}
+
+/* Для повідомлень */
+.notification-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.notification-item:last-child {
+  margin-bottom: 0;
+}
+
+.notif-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.notif-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+.notif-text {
+  font-size: 12px;
+  color: #555;
+}
+
+/* Відображення при наведенні */
+.notification:hover + .notification-dropdown,
+.notification-dropdown:hover {
+  display: block;
+}
+
+.user-profile:hover + .profile-dropdown,
+.profile-dropdown:hover {
+  display: block;
+}
+/*-----------------------------------------------------------------------*/
+/* Стилі для контейнерів */
+
+
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">CMS</div>
+    <div class="header-right">
+      <div class="notification"><img src="assets/alarm.png" class="bell"></div>
+      <!-- Notification Dropdown -->
+      <div class="notification-dropdown">
+        <div class="notification-item">
+          <img src="assets/user_icon.jpg" class="notif-avatar">
+          <div>
+            <div class="notif-name">Admin</div>
+            <div class="notif-text">[текст повідомлення]</div>
+          </div>
+        </div>
+        <div class="notification-item">
+          <img src="assets/user_icon.jpg" class="notif-avatar">
+          <div>
+            <div class="notif-name">John K.</div>
+            <div class="notif-text">[текст повідомлення]</div>
+          </div>
+        </div>
+        <div class="notification-item">
+          <img src="assets/user_icon.jpg" class="notif-avatar">
+          <div>
+            <div class="notif-name">Ann S.</div>
+            <div class="notif-text">[текст повідомлення]</div>
+          </div>
+        </div>
+      </div>
+  
+
+  
+      <div class="user-profile" id="profileArea">
+        <div class="avatar"><img src="assets/user_icon.jpg" class="avatar_icon"> </div>
+        <div>James Bond</div>
+
+      </div>
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown" id="profileDropdown">
+            <div class="dropdown-item">Profile</div>
+            <div class="dropdown-item">Log Out</div>
+        </div>
+    </div>
+  </div>
+
+
+
+<div class="main-container" style="display:flex"> 
+  <div class="sidebar" id="sidebar">
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="index.html" class="active"><b>Students</b></a></li>
+        <li><a href="tasks.html">Tasks</a></li>
+        </ul>
+</div>
+<div class="main-container" style="display:flex">
+  <button class="burger-btn" onclick="toggleMenu()">☰</button></div>
+<!--
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#" class="active"><b>Students</b></a></li>
+      <li><a href="#">Tasks</a></li>
+    </ul>
+  </div>
+</div>-->
+
+
+  
+      <div class="container">
+        <br><br>
+          <p style="font-size:34px; padding:0px;margin:0px;">Students</p>
+          <button class="add-button"><span style="font-size: 20px;">+</span> </button></button><br><br><br>
+          <div class="table-container">
+              <table id="studentsTable">
+                  <thead>
+                      <tr>
+                          <th><input type="checkbox"></th>
+                          <th>Група</th>
+                          <th>Ім'я</th>
+                          <th>Стать</th>
+                          <th>День народження</th>
+                          <th>Статус</th>
+                          <th>Опції</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><input type="checkbox" checked></td>
+                          <td>KN-21</td>
+                          <td>John Smith</td>
+                          <td>M</td>
+                          <td>11.05.2004</td>
+                          <td><span class="status-active"></span></td>
+                          <td class="options">
+                              <button>✏️</button>
+                              <button>❌</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td><input type="checkbox"></td>
+                          <td>KN-22</td>
+                          <td>Ann Bond</td>
+                          <td>F</td>
+                          <td>24.04.2004</td>
+                          <td><span class="status-inactive"></span></td>
+                          <td class="options">
+                              <button>✏️</button>
+                              <button>❌</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td><input type="checkbox"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="options">
+                              <button>✏️</button>
+                              <button>❌</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td><input type="checkbox"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class="options">
+                              <button>✏️</button>
+                              <button>❌</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+
+          <div class="pagination">
+              <button>&lt;</button>
+              <button class="active">1</button>
+              <button>2</button>
+              <button>3</button>
+              <button>4</button>
+              <button>&gt;</button>
+          </div>
+
+      </div>
+  </div>
+</div>
+</div>
+
+<!-- Модальне вікно -->
+<div id="studentModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close" style="float:right">&times;</span>
+    <h2>Add student</h2>
+    <form id="studentForm">
+      <label>Group
+        <select id="group">
+          <option value="">Select Group</option>
+          <option value="Group A">Group A</option>
+          <option value="Group B">Group B</option>
+        </select>
+      </label><br>
+      <label>First name
+        <input type="text" id="firstName">
+      </label><br>
+      <label>Last name
+        <input type="text" id="lastName">
+      </label><br>
+      <label>Gender
+        <select id="gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </label><br>
+      <label>Birthday
+        <input type="date" id="birthday">
+      </label><br><br>
+
+      <button type="button" id="cancelBtn">Cancel</button>
+      <button type="button" id="createBtn">Create</button>
+    </form>
+  </div>
+</div>
+<script>
+  document.querySelector('.add-button').addEventListener('click', function () {
+    document.getElementById('studentModal').style.display = 'flex';
+    document.querySelector('h2').innerText = 'Add student';
+    document.getElementById('studentForm').reset();
+  });
+  
+  document.querySelector('.close').addEventListener('click', function () {
+    document.getElementById('studentModal').style.display = 'none';
+  });
+  
+  document.getElementById('cancelBtn').addEventListener('click', function () {
+    document.getElementById('studentModal').style.display = 'none';
+  });
+  
+  document.getElementById('createBtn').addEventListener('click', function () {
+    const group = document.getElementById('group').value;
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const gender = document.getElementById('gender').value;
+    const birthday = document.getElementById('birthday').value;
+  
+    if (!group || !firstName || !lastName || !gender || !birthday) {
+      alert('Будь ласка, заповніть усі поля.');
+      return;
+    }
+  
+    function formatDate(dateString) {
+      const parts = dateString.split("-");
+      const formatted = `${parts[2]}.${parts[1]}.${parts[0]}`;
+      return formatted;
+    }
+
+    //const formattedDate = formatDate(rawDate);
+
+
+    const table = document.getElementById('studentsTable').querySelector('tbody');
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+    <td><input type="checkbox"></td>
+      <td>${group}</td>
+      <td>${firstName} ${lastName}</td>
+      <td>${gender}</td>
+      <td>${formatDate(birthday)}</td>
+                                
+                          
+                          <td><span class="status-inactive"></span></td>
+                          <td class="options">
+                              <button>✏️</button>
+                              <button>❌</button>
+                          </td>
+    `;
+    table.appendChild(newRow);
+  
+    document.getElementById('studentModal').style.display = 'none';
+  });
+
+
+
+
+
+  function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar.style.display === "block") {
+        sidebar.style.display = "none";
+    } else {
+        sidebar.style.display = "block";
+    }
+}
+
+
+
+const profileArea = document.getElementById('profileArea');
+  const profileDropdown = document.getElementById('profileDropdown');
+
+  let hideTimeout;
+
+  profileArea.addEventListener('mouseenter', () => {
+    clearTimeout(hideTimeout); // якщо був таймер на приховування
+    profileDropdown.style.display = 'block';
+  });
+
+  profileArea.addEventListener('mouseleave', () => {
+    hideTimeout = setTimeout(() => {
+      profileDropdown.style.display = 'none';
+    }, 5000); // затримка в 1 секунду
+  });
+  </script>
+</body>
+</html>

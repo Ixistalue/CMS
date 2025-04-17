@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Icon Replace with Pop</title>
+  <style>
+    .notification {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    .bell {
+      width: 100%;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .old-bell {
+      transform: scale(0.3);
+      opacity: 0;
+    }
+
+    @keyframes pop-in {
+      0% { transform: scale(0.5); opacity: 0; }
+      80% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    .new-bell {
+      animation: pop-in 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+
+<div class="notification" onclick="swapBell()">
+  <img src="assets/alarm.png" class="bell" id="bell">
+</div>
+
+<script>
+  function swapBell() {
+    const oldBell = document.getElementById('bell');
+    oldBell.classList.add('old-bell');
+
+    setTimeout(() => {
+      oldBell.remove();
+
+      const newBell = document.createElement('img');
+      newBell.src = 'assets/alarm.png'; // Інша іконка
+      newBell.classList.add('bell', 'new-bell');
+      newBell.id = 'bell';
+
+      document.querySelector('.notification').appendChild(newBell);
+    }, 300);
+  }
+</script>
+
+</body>
+</html>

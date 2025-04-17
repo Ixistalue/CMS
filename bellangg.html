@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notification Bell Enhanced</title>
+  <style>
+    .notification {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .bell {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+      transform-origin: top center;
+    }
+
+    .notification::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 10px;
+      height: 10px;
+      background-color: orange;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 0 rgba(255, 165, 0, 0.7);
+    }
+
+    @keyframes shake-epic {
+  0%   { transform: rotate(0deg); }
+  5%   { transform: rotate(-35deg); }
+  10%  { transform: rotate(30deg); }
+  15%  { transform: rotate(-25deg); }
+  20%  { transform: rotate(20deg); }
+  25%  { transform: rotate(-15deg); }
+  30%  { transform: rotate(12deg); }
+  35%  { transform: rotate(-10deg); }
+  40%  { transform: rotate(8deg); }
+  45%  { transform: rotate(-6deg); }
+  50%  { transform: rotate(5deg); }
+  55%  { transform: rotate(-4deg); }
+  60%  { transform: rotate(3deg); }
+  65%  { transform: rotate(-2deg); }
+  70%  { transform: rotate(1.5deg); }
+  75%  { transform: rotate(-1deg); }
+  80%  { transform: rotate(0.5deg); }
+  85%  { transform: rotate(-0.5deg); }
+  90%  { transform: rotate(0.2deg); }
+  95%  { transform: rotate(-0.1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.shake {
+  animation: shake-epic 4s ease-in-out;
+  /*animation-iteration-count: 3;*/
+}
+
+
+
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+      }
+      70% {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 10px rgba(255, 165, 0, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+      }
+    }
+
+    @keyframes ping {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    .badge::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 100%; height: 100%;
+      background: yellow;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: ping 1.5s infinite;
+      z-index: -1;
+    }
+
+    .hide-badge::after {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="notification" ondblclick="animateBell()" id="notification">
+  <img src="assets/alarm.png" class="bell" id="bell">
+</div>
+
+<script>
+  function animateBell() {
+    const bell = document.getElementById("bell");
+    const notification = document.getElementById("notification");
+
+    // Приховати кружечок (через додання класу)
+    notification.classList.add("hide-badge");
+
+    // Запуск анімації дзвіночка
+    bell.classList.remove("shake");
+    void bell.offsetWidth; // перезапуск
+    bell.classList.add("shake");
+
+    // Повернути кружечок через 4 секунди
+    setTimeout(() => {
+      notification.classList.remove("hide-badge");
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>

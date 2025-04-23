@@ -1,5 +1,793 @@
-.header{
+body {
+  margin: 0;
+}
+
+.header {
+  background-color: #e7dde4; /* Сірий фон */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 16px;
+  font-family: Arial, sans-serif;
+}
+
+.header-left {
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.notification::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  width: 10px;
+  height: 10px;
+  background-color: orange;
+  border-radius: 50%;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(146, 237, 239);
+}
+.avatar_icon{
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+
+}
+.bell{
+  padding-right:5px;
+  padding-top:5px;
+  width: 28px;
+  height: 28px;
+}
+
+/*sidebar styles*/
+.sidebar {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        padding: 20px;
+        width: 200px;
+        height: 100vh;
+        border-right: 1px solid #ddd;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: #333;
+        display: block;
+        padding: 8px 10px;
+        border-radius: 5px;
+    }
+
+    .sidebar a:hover {
+        background-color: #e9ecef;
+    }
+    /*-----/*/
+    body {
+      background-color:white;
+margin: 0;
+font-family: sans-serif;
+}
+
+/*----*/
+/*
+
+
+.container{
+  padding-left:50px;
+  padding-right:50px; 
+  width:100%;
+}*/
+
+
+
+/*OLD STYLE FOR TABLE
+.container{
+padding-left:50px;
+padding-right:50px; 
+width:100%;
+}
+
+.table-container {
+        overflow-x: auto;
+    }
+
+    table {
+
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .options {
+      justify-content: center;
+        display: flex;
+        gap: 5px;
+    }
+
+    .options button {
+        padding: 5px 8px;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+
+    }
+
+    .status-active {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #4CAF50; /* Зелений */
+    /*}
+    /*
+    .status-inactive {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ddd; /* Сірий */
+   /* }
+
+
+
+
+
+    /*END OLD TABLE STYLE*/
+
+
+
+
+
+
+
+    .add-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        float: right;
+    }
+
+    .pagination {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .pagination button {
+        padding: 5px 10px;
+        margin: 0 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+
+/*Modal styles/*/
+.modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.6);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Вміст модального вікна */
+.modal-content {
+background-color: #ffffff;
+padding: 30px 40px;
+border-radius: 12px;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+width: 100%;
+max-width: 500px;
+font-family: 'Segoe UI', sans-serif;
+position: relative;
+animation: slideIn 0.4s ease;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+@keyframes slideIn {
+from { transform: translateY(-20px); opacity: 0; }
+to { transform: translateY(0); opacity: 1; }
+}
+
+/* Кнопка закриття */
+.close {
+position: absolute;
+right: 20px;
+top: 15px;
+font-size: 24px;
+color: #777;
+cursor: pointer;
+transition: color 0.2s;
+}
+
+.close:hover {
+color: #000;
+}
+
+/* Стилі для заголовка */
+.modal-content h2 {
+margin-top: 0;
+margin-bottom: 20px;
+font-size: 24px;
+color: #333;
+}
+
+/* Стилі для форми */
+form label {
+display: block;
+margin-bottom: 15px;
+font-weight: 500;
+color: #444;
+}
+
+form label select,
+form label input[type="text"],
+form label input[type="date"] {
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 14px;
+box-sizing: border-box;
+}
+
+/* Кнопки */
+#cancelBtn, #createBtn {
+padding: 10px 20px;
+border: none;
+border-radius: 8px;
+font-size: 14px;
+margin-right: 10px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+#cancelBtn {
+background-color: #f5f5f5;
+color: #333;
+}
+
+#cancelBtn:hover {
+background-color: #e0e0e0;
+}
+
+#createBtn {
+background-color: #007BFF;
+color: white;
+}
+
+#createBtn:hover {
+background-color: #0056b3;
+}
+
+
+
+
+
+/*Игкпук ьутгБургер меню*/
+.burger-btn {
+display: none;
+font-size: 24px;
+padding: 10px;
+background: none;
+border: none;
+cursor: pointer;
+position: absolute;
+top: 80px;
+left: 10px;
+z-index: 999;
+}
+
+@media (max-width: 600px) {
+.sidebar {
+    padding-top:75px;
+    display: none;
+    position: absolute;
+    background-color: #f8f9fa;
+    width: 200px;
+    height: 100vh;
+    top: 1000;
+    left: 0;
+    z-index: 998;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+.burger-btn {
+    top: 50px;
+    display: block;
+}
+}
+
+
+/*Styles from 2.html*/
+/*Style for bell animation*/
+/*Start*/
+
+
+.bell {
+  /*width: 100%;
+  height: auto;*/
+  transition: transform 0.3s ease;
+  transform-origin: top center;
+}
+
+.notification::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  width: 10px;
+  height: 10px;
+  background-color: orange;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 0 rgba(255, 165, 0, 0.7);
+}
+
+@keyframes shake-epic {
+  0%   { transform: rotate(0deg); }
+  5%   { transform: rotate(-35deg); }
+  10%  { transform: rotate(30deg); }
+  15%  { transform: rotate(-25deg); }
+  20%  { transform: rotate(20deg); }
+  25%  { transform: rotate(-15deg); }
+  30%  { transform: rotate(12deg); }
+  35%  { transform: rotate(-10deg); }
+  40%  { transform: rotate(8deg); }
+  45%  { transform: rotate(-6deg); }
+  50%  { transform: rotate(5deg); }
+  55%  { transform: rotate(-4deg); }
+  60%  { transform: rotate(3deg); }
+  65%  { transform: rotate(-2deg); }
+  70%  { transform: rotate(1.5deg); }
+  75%  { transform: rotate(-1deg); }
+  80%  { transform: rotate(0.5deg); }
+  85%  { transform: rotate(-0.5deg); }
+  90%  { transform: rotate(0.2deg); }
+  95%  { transform: rotate(-0.1deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.shake {
+  animation: shake-epic 4s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+  }
+  70% {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 10px rgba(255, 165, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+  }
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.badge::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  background: yellow;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ping 1.5s infinite;
+  z-index: -1;
+}
+
+.hide-badge::after {
+  display: none;
+}
+/*End*/
+
+/*header improvements*/
+/* Основні стилі для dropdown */
+
+
+
+
+.profile-dropdown {
+  position: absolute;
+  top: 47px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 200px;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+/* Для dropdown профілю */
+.profile-dropdown {
+  width: 150px;
+  right: 0;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+.dropdown-item:hover {
+  /*transition-duration: 100000ms;*/
+  background-color: #e9ecef;
+}
+.dropdown-item a {
+            text-decoration: none;
+            color:#000;
+
+        }
+
+/* Для повідомлень */
+
+.notification-dropdown {
+  position: absolute;
+  top: 47px;
+  right:1px;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 300px;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 4px;
+  padding: 10px;
+}
+.notification-dropdown {
+  flex-direction: column;
+}
+
+/* Усі елементи однакової ширини */
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+/* Установлюємо фіксовану або мінімальну ширину */
+.notif-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  width: 55px; /* можеш збільшити/зменшити */
+  flex-shrink: 0;
+}
+
+.notif-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+.notif-name {
+  color:black;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  padding: 0 4px; /* відступи по краях */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.notif-text {
+  font-size: 12px;
+  color: #555;
+  background-color: #e0e0e0;
+  padding: 8px;
+  border-radius: 6px;
+  max-width: 180px;
+  word-wrap: break-word;
+  flex: 1;
+}
+
+
+
+
+/* Відображення при наведенні */
+.notification:hover + .notification-dropdown,
+.notification-dropdown:hover {
+  display: block;
+}
+/*
+.user-profile:hover + .profile-dropdown,
+.profile-dropdown:hover {
+  display: block;
+}*/
+/*-----------------------------------------------------------------------*/
+/* Стилі для контейнерів */
+@media (max-width: 320px) {
+  .notification-dropdown {
+    width: 100vw;
+    right: 0;
+    left: 0;
+    padding: 10px 5px;
+    border-radius: 0;
+  }
+
+  .notif-text {
+    max-width: 100%;
+  }
+
+  .notif-user {
+    width: 45px;
+  }
+
+  .notif-name {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+/*-----------------------------------------------------------------------*/
+
+
+
+
+
+
+/*New style for table*/
+/*START*/
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+/*
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.options button {
+  background: none;
+  border: none !important;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.options button img {
+  width: 25px;
+  height: 25px;
+}
+
+/* Hover effect */
+/*.options button:hover {
+  transform: scale(1.2);
+  /*filter: brightness(1.2);*/
+/*}*/
+
+/*options rewrite*/
+.edit-icon img,
+.del-icon img{
+  width: 25px;
+  height: 25px;
+}
+.edit-icon:hover,
+.del-icon:hover{
+  transform: scale(1.2);
+
+}
+.edit-icon ,
+.del-icon {
+  background: none;
+  border: none !important;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+
+
+/*end*/
+
+
+
+
+/* Status dots */
+.status-active, .status-inactive {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-active {
+  background-color: #4CAF50;
+}
+
+.status-inactive {
+  background-color: #ddd;
+}
+/*delete modal window*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+/*
+.close-button {
+  position: absolute;
+  right: 10px; top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}*/
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-buttons button:hover {
+  background-color: #999;
+}
+
+
+
+
+/*Дубляж*/
+.close, .close-button {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 24px;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close:hover,.close-button:hover {
+  color: #000;
+}
+/*енд дубляжу*/
+/*END*/
+
+
+
+@media screen and (max-width: 750px) {
+  .left-menu{
+    flex:15%;
+  }
+  .table-container{
     width:100%;
-    background-color: aquamarine;
-    height:12em;
+  }
+  .container{
+    width:50%;
+    flex:80%;
+    justify-content: center; 
+    padding-left: 10px;
+    padding-right:10px;
+  }
+  .sidebar{
+    width:150px;
+  }
 }

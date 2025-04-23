@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Header CMS</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .header {
+      background-color: #999999; /* Сірий фон */
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    .header-left {
+      font-weight: bold;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .notification {
+      position: relative;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .notification::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      right: 0px;
+      width: 8px;
+      height: 8px;
+      background-color: orange;
+      border-radius: 50%;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: #dff6f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0abacb;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">CMS</div>
+    <div class="header-right">
+      <div class="notification">🔔</div>
+      <div class="user-profile">
+        <div class="avatar">👤</div>
+        <div>James Bond</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

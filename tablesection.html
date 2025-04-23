@@ -117,7 +117,7 @@
   padding-right:50px; 
   width:100%;
 }
-
+/*old table styles
 .table-container {
             overflow-x: auto;
         }
@@ -136,7 +136,8 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #f2f2f2;CMS
+            
         }
 
         .options {
@@ -159,7 +160,7 @@
             height: 10px;
             border-radius: 50%;
             background-color: #4CAF50; /* Зелений */
-        }
+       /* }
 
         .status-inactive {
             display: inline-block;
@@ -167,7 +168,7 @@
             height: 10px;
             border-radius: 50%;
             background-color: #ddd; /* Сірий */
-        }
+        /*}*/
 
         .add-button {
             background-color: #007bff;
@@ -234,7 +235,7 @@
   }
 
   /* Кнопка закриття */
-  .close {
+  .close, .close-button {
     position: absolute;
     right: 20px;
     top: 15px;
@@ -244,7 +245,7 @@
     transition: color 0.2s;
   }
 
-  .close:hover {
+  .close:hover,.close-button:hover {
     color: #000;
   }
 
@@ -342,153 +343,118 @@
         display: block;
     }
 }
+</style>
 
-
-
-
-/*header improvements*/
-/* Основні стилі для dropdown */
-
-
-
-
-.profile-dropdown {
-  position: absolute;
-  top: 47px;
-  right: 10px;
-  background-color: white;
-  border: 1px solid #ccc;
-  width: 200px;
-  display: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  border-radius: 4px;
-  padding: 10px;
+<!–– Table styles ––>
+<style>
+    body{
+        background-color:white;
+    }
+    .table-container {
+    overflow-x: auto;
 }
 
-/* Для dropdown профілю */
-.profile-dropdown {
-  width: 150px;
-  right: 0;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.dropdown-item {
-  padding: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
-}
-.dropdown-item:hover {
-  /*transition-duration: 100000ms;*/
-  background-color: #e9ecef;
-}
-.dropdown-item a {
-            text-decoration: none;
-            color:#000;
-
-        }
-
-/* Для повідомлень */
-
-.notification-dropdown {
-  position: absolute;
-  top: 47px;
-  right:1px;
-  background-color: white;
-  border: 1px solid #ccc;
-  width: 300px;
-  display: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  border-radius: 4px;
-  padding: 10px;
-}
-.notification-dropdown {
-  flex-direction: column;
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
 }
 
-/* Усі елементи однакової ширини */
-.notification-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
+th {
+    background-color: #f2f2f2;
 }
 
-/* Установлюємо фіксовану або мінімальну ширину */
-.notif-user {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
-  width: 55px; /* можеш збільшити/зменшити */
-  flex-shrink: 0;
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
 }
 
-.notif-avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  margin-bottom: 5px;
+.options button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.notif-name {
-  color:black;
-  font-weight: bold;
-  font-size: 14px;
-  text-align: center;
-  padding: 0 4px; /* відступи по краях */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
+.options button img {
+    width: 25px;
+    height: 25px;
 }
 
-.notif-text {
-  font-size: 12px;
-  color: #555;
-  background-color: #e0e0e0;
-  padding: 8px;
-  border-radius: 6px;
-  max-width: 180px;
-  word-wrap: break-word;
-  flex: 1;
+/* Hover effect */
+.options button:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
 }
 
+/* Status dots */
+.status-active, .status-inactive {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
 
+.status-active {
+    background-color: #4CAF50;
+}
 
+.status-inactive {
+    background-color: #ddd;
+}
+/*delete modal window*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
 
-/* Відображення при наведенні */
-.notification:hover + .notification-dropdown,
-.notification-dropdown:hover {
-  display: block;
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 /*
-.user-profile:hover + .profile-dropdown,
-.profile-dropdown:hover {
-  display: block;
+.close-button {
+    position: absolute;
+    right: 10px; top: 10px;
+    font-size: 20px;
+    cursor: pointer;
 }*/
-/*-----------------------------------------------------------------------*/
-/* Стилі для контейнерів */
-@media (max-width: 320px) {
-  .notification-dropdown {
-    width: 100vw;
-    right: 0;
-    left: 0;
-    padding: 10px 5px;
-    border-radius: 0;
-  }
 
-  .notif-text {
-    max-width: 100%;
-  }
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
 
-  .notif-user {
-    width: 45px;
-  }
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s;
+}
 
-  .notif-name {
-    font-size: 12px;
-  }
+.modal-buttons button:hover {
+    background-color: #999;
 }
 
 </style>
@@ -498,45 +464,11 @@
   <div class="header">
     <div class="header-left">CMS</div>
     <div class="header-right">
-      <div class="notification" id="messageArea"><img src="assets/alarm.png" class="bell"></div>
-      <!-- Notification Dropdown -->
-      <div class="notification-dropdown" id="messageDropdown">
-        <div class="notification-item" style="margin-top:10px;">
-          <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar">
-            <div class="notif-name">Admin</div>
-          </div>
-          <div class="notif-text">We live on the most beautiful planet, Earth which has very clean and attractive nature full of greenery.</div>
-        </div>
-        <div class="notification-item">
-          <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar">
-            <div class="notif-name" style="color:black;">John K.</div>
-          </div>
-          <div class="notif-text"> Nature is our best friend which provides us all the resources to live here </div>
-        </div>
-        <div class="notification-item">
-          <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar">
-            <div class="notif-name">Ann S.</div>
-          </div>
-          <div class="notif-text"> It gives us water to drink, pure air to breathe, food to eat, land to stay, animals, plants for our other uses, etc for our betterment</div>
-        </div>
-      </div>
-      
-  
-
-  
-      <div class="user-profile" id="profileArea">
+      <div class="notification"><img src="assets/alarm.png" class="bell"></div>
+      <div class="user-profile">
         <div class="avatar"><img src="assets/user_icon.jpg" class="avatar_icon"> </div>
         <div>James Bond</div>
-
       </div>
-        <!-- Profile Dropdown -->
-        <div class="profile-dropdown" id="profileDropdown">
-            <div class="dropdown-item"><a href="">Profile</a></div>
-            <div class="dropdown-item"><a href="">Log Out</a></div>
-        </div>
     </div>
   </div>
 
@@ -570,67 +502,33 @@
           <button class="add-button"><span style="font-size: 20px;">+</span> </button></button><br><br><br>
           <div class="table-container">
               <table id="studentsTable">
-                  <thead>
-                      <tr>
-                          <th><input type="checkbox"></th>
-                          <th>Група</th>
-                          <th>Ім'я</th>
-                          <th>Стать</th>
-                          <th>День народження</th>
-                          <th>Статус</th>
-                          <th>Опції</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td><input type="checkbox" checked></td>
-                          <td>KN-21</td>
-                          <td>John Smith</td>
-                          <td>M</td>
-                          <td>11.05.2004</td>
-                          <td><span class="status-active"></span></td>
-                          <td class="options">
-                              <button>✏️</button>
-                              <button>❌</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td><input type="checkbox"></td>
-                          <td>KN-22</td>
-                          <td>Ann Bond</td>
-                          <td>F</td>
-                          <td>24.04.2004</td>
-                          <td><span class="status-inactive"></span></td>
-                          <td class="options">
-                              <button>✏️</button>
-                              <button>❌</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td><input type="checkbox"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="options">
-                              <button>✏️</button>
-                              <button>❌</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td><input type="checkbox"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td class="options">
-                              <button>✏️</button>
-                              <button>❌</button>
-                          </td>
-                      </tr>
-                  </tbody>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>Група</th>
+                        <th>Ім'я</th>
+                        <th>Стать</th>
+                        <th>День народження</th>
+                        <th>Статус</th>
+                        <th>Опції</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="row-checkbox"></td>
+                        <td>KN-21</td>
+                        <td>John Smith</td>
+                        <td>M</td>
+                        <td>11.05.2004</td>
+                        <td><span class="status-active"></span></td>
+                        <td class="options">
+                            <button class="edit-icon"><img src="assets/edit32.png" alt="Редагувати"></button>
+                            <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
+                        </td>
+                    </tr>
+                    <!-- Інші рядки аналогічно -->
+                </tbody>
+                
               </table>
           </div>
 
@@ -647,7 +545,20 @@
   </div>
 </div>
 </div>
-
+<div id="confirmModal" class="modal" >
+    <div class="modal-content">
+      <span class="close-button" style="float:right">&times;</span>
+      <h2 style="text-align:left;">Warning</h2>
+      
+      <p id="confirmText">Are you sure you want to delete user?</p>
+      <div class="modal-buttons">
+        <button id="confirmCancel">Cancel</button>
+        <button id="confirmOk">OK</button>
+        
+      </div>
+    </div>
+</div>
+  
 <!-- Модальне вікно -->
 <div id="studentModal" class="modal" style="display: none;">
   <div class="modal-content">
@@ -752,57 +663,61 @@
         sidebar.style.display = "block";
     }
 }
-
-
-
-const profileArea = document.getElementById('profileArea');
-const profileDropdown = document.getElementById('profileDropdown');
-
-let hideTimeout;
-
-function showDropdown() {
-  clearTimeout(hideTimeout);
-  profileDropdown.style.display = 'block';
-}
-
-function hideDropdown() {
-  hideTimeout = setTimeout(() => {
-    profileDropdown.style.display = 'none';
-  }, 300);
-}
-
-// Коли курсор заходить на область профілю або на меню
-profileArea.addEventListener('mouseenter', showDropdown);
-profileDropdown.addEventListener('mouseenter', showDropdown);
-
-// Коли курсор виходить з обох — запускається таймер
-profileArea.addEventListener('mouseleave', hideDropdown);
-profileDropdown.addEventListener('mouseleave', hideDropdown);
-
-const messageArea = document.getElementById('messageArea');
-const messageDropdown = document.getElementById('messageDropdown');
-
-let hideTimeout2;
-
-function showDropdownM() {
-  clearTimeout(hideTimeout2);
-  messageDropdown.style.display = 'block';
-}
-
-function hideDropdownM() {
-  hideTimeout2 = setTimeout(() => {
-    messageDropdown.style.display = 'none';
-  }, 300);
-}
-
-// Коли курсор заходить на область профілю або на меню
-messageArea.addEventListener('mouseenter', showDropdownM);
-messageDropdown.addEventListener('mouseenter', showDropdownM);
-
-// Коли курсор виходить з обох — запускається таймер
-messageArea.addEventListener('mouseleave', hideDropdownM);
-messageDropdown.addEventListener('mouseleave', hideDropdownM);
-
   </script>
+  <script>
+    const selectAllCheckbox = document.getElementById('selectAll');
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+
+    selectAllCheckbox.addEventListener('change', () => {
+        rowCheckboxes.forEach(cb => {
+            cb.checked = selectAllCheckbox.checked;
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("confirmModal");
+        const confirmText = document.getElementById("confirmText");
+        const closeBtn = document.querySelector(".close-button");
+        const okBtn = document.getElementById("confirmOk");
+        const cancelBtn = document.getElementById("confirmCancel");
+    
+        let rowToDelete = null;
+    
+        document.querySelectorAll(".del-icon").forEach(button => {
+            button.addEventListener("click", function () {
+                const row = this.closest("tr");
+                const studentName = row.querySelector("td:nth-child(3)").textContent;
+                confirmText.textContent = `Are you sure you want to delete user "${studentName}"?`;
+                modal.style.display = "flex";
+                rowToDelete = row;
+            });
+        });
+    
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    
+        cancelBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    
+        okBtn.addEventListener("click", () => {
+            if (rowToDelete) {
+                rowToDelete.remove();
+                modal.style.display = "none";
+            }
+        });
+    
+        // Закриття по кліку за межами вікна
+        window.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+    </script>
+    
+  
 </body>
 </html>

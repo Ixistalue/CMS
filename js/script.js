@@ -17,7 +17,7 @@
     const group = document.getElementById('group').value;
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
-    const gender = document.getElementById('gender').value;
+    let gender = document.getElementById('gender').value;
     const birthday = document.getElementById('birthday').value;
   
     if (!group || !firstName || !lastName || !gender || !birthday) {
@@ -32,7 +32,7 @@
     }
 
     //const formattedDate = formatDate(rawDate);
-
+    gender = gender == "Male" ? "M" : "F";
 
     const table = document.getElementById('studentsTable').querySelector('tbody');
     const newRow = document.createElement('tr');
@@ -150,6 +150,7 @@ messageDropdown.addEventListener('mouseleave', hideDropdownM);
 
   /*tablesection*/
   /*start*/
+  
   document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("confirmModal");
     const confirmText = document.getElementById("confirmText");
@@ -157,18 +158,24 @@ messageDropdown.addEventListener('mouseleave', hideDropdownM);
     const okBtn = document.getElementById("confirmOk");
     const cancelBtn = document.getElementById("confirmCancel");
 
-    let rowToDelete = null;
+    let rowToDelete = null; // ✅ буде зберігати рядок для видалення
 
-    document.querySelectorAll(".del-icon").forEach(button => {
-        button.addEventListener("click", function () {
-            const row = this.closest("tr");
-            const studentName = row.querySelector("td:nth-child(3)").textContent;
-            confirmText.textContent = `Are you sure you want to delete user "${studentName}"?`;
-            modal.style.display = "flex";
-            rowToDelete = row;
-        });
+    // ✅ Делеговане видалення
+    document.querySelector('#studentsTable tbody').addEventListener('click', function (e) {
+        const deleteBtn = e.target.closest('.del-icon');
+        if (deleteBtn) {
+            const row = deleteBtn.closest('tr');
+            const checkbox = row.querySelector('.row-checkbox');
+            if (checkbox && checkbox.checked) {
+                const studentName = row.querySelector('td:nth-child(3)').textContent;
+                confirmText.textContent = `Are you sure you want to delete user "${studentName}"?`;
+                modal.style.display = "flex";
+                rowToDelete = row; // зберігаємо рядок для видалення
+            }
+        }
     });
 
+    // ✅ Обробники модального вікна (тільки один раз додаються)
     closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
     });
@@ -181,23 +188,31 @@ messageDropdown.addEventListener('mouseleave', hideDropdownM);
         if (rowToDelete) {
             rowToDelete.remove();
             modal.style.display = "none";
+            rowToDelete = null; // очищення
         }
     });
 
-    // Закриття по кліку за межами вікна
     window.addEventListener("click", (e) => {
         if (e.target === modal) {
             modal.style.display = "none";
         }
     });
 });
-document.getElementById('studentsTable').addEventListener('click', function (e) {
-  if (e.target.closest('.del-icon')) {
-      const row = e.target.closest('tr');
-      const studentName = row.querySelector("td:nth-child(3)").textContent;
-      confirmText.textContent = `Are you sure you want to delete user "${studentName}"?`;
-      modal.style.display = "flex";
-      rowToDelete = row;
-  }
-});
+
+  /*end*/
+
+
+
+  /*checkboxes*/
+
+  const selectAllCheckbox = document.getElementById('selectAll');
+
+
+  selectAllCheckbox.addEventListener('change', () => {
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+      rowCheckboxes.forEach(cb => {
+          cb.checked = selectAllCheckbox.checked;
+      });
+  });
+
   /*end*/

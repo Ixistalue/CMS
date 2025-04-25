@@ -2,8 +2,8 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <meta name="theme-color" content="#319197">
-  <title>Header CMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMS</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,31 +11,29 @@
   <div class="header">
     <div class="header-left">CMS</div>
     <div class="header-right">
-      <!--<div class="notification"><img src="assets/alarm.png" class="bell"></div>-->
-      <!-- Контейнер -->
       <div class="notification" ondblclick="animateBell()" id="notification">
-        <img src="assets/alarm.png" class="bell" id="bell">
-        <audio id="bell-sound" src="assets/bell-sound.mp3"></audio> <!-- Додати звук дзвіночка -->
+        <img src="assets/alarm.png" class="bell" id="bell" alt="bell">
+        <audio id="bell-sound" src="assets/bell-sound.mp3"></audio> 
       </div>
-      <!-- Notification Dropdown -->
+
       <div class="notification-dropdown" id="messageDropdown">
         <div class="notification-item" style="margin-top:10px;">
           <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar">
+            <img src="assets/user_icon.jpg" class="notif-avatar" alt="user">
             <div class="notif-name">Admin</div>
           </div>
           <div class="notif-text">We live on the most beautiful planet, Earth which has very clean and attractive nature full of greenery.</div>
         </div>
         <div class="notification-item">
           <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar">
+            <img src="assets/user_icon.jpg" class="notif-avatar" alt="bell">
             <div class="notif-name" style="color:black;">John K.</div>
           </div>
           <div class="notif-text"> Nature is our best friend which provides us all the resources to live here </div>
         </div>
         <div class="notification-item">
           <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar">
+            <img src="assets/user_icon.jpg" class="notif-avatar" alt="bell">
             <div class="notif-name">Ann S.</div>
           </div>
           <div class="notif-text"> It gives us water to drink, pure air to breathe, food to eat, land to stay, animals, plants for our other uses, etc for our betterment</div>
@@ -44,10 +42,10 @@
 
 
       <div class="user-profile" id="profileArea">
-        <div class="avatar"><img src="assets/user_icon.jpg" class="avatar_icon"> </div>
+        <div class="avatar"><img src="assets/user_icon.jpg" class="avatar_icon" alt="avatar"> </div>
         <div>James Bond</div>
 
-        <!-- Profile Dropdown -->
+        
         <div class="profile-dropdown" id="profileDropdown">
           <div class="dropdown-item"><a href="">Profile</a></div>
           <div class="dropdown-item"><a href="">Log Out</a></div>
@@ -61,29 +59,20 @@
 <div class="main-container" style="display:flex"> 
 <div class="left-menu" style="flex:15%">
   <div class="sidebar" id="sidebar">
+    <nav>
     <ul>
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="index.html" class="active"><b>Students</b></a></li>
         <li><a href="tasks.html">Tasks</a></li>
         </ul>
+      </nav>
   </div>
   <div class="burger-menu" >
     <button class="burger-btn" onclick="toggleMenu()">☰</button>
   </div>
 
 </div>
-<!--
-  <div class="sidebar" id="sidebar">
-    <ul>
-      <li><a href="#">Dashboard</a></li>
-      <li><a href="#" class="active"><b>Students</b></a></li>
-      <li><a href="#">Tasks</a></li>
-    </ul>
-  </div>
-</div>-->
 
-
-  
 <div class="container" style="flex:85%;justify-content: center; padding-left: 10px;padding-right:10px;">
   <br><br>
     <p style="font-size:34px; padding:0px;margin:0px;">Students</p>
@@ -92,7 +81,7 @@
         <table id="studentsTable">
           <thead>
               <tr>
-                  <th><input type="checkbox" id="selectAll"></th>
+                  <th><input type="checkbox" id="selectAll"><label for="selectAll" >Select all</label></th>
                   <th>Group</th>
                   <th>Name</th>
                   <th>Gender</th>
@@ -103,19 +92,19 @@
           </thead>
           <tbody>
               <tr>
-                  <td><input type="checkbox" class="row-checkbox"></td>
+                  <td><label><input type="checkbox" class="row-checkbox"></label></td>
                   <td>KN-21</td>
                   <td>John Smith</td>
                   <td>M</td>
                   <td>11.05.2004</td>
                   <td><span class="status-active"></span></td>
                   <td class="options" >
-                      <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
-                      <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
+                      <button class="edit-icon" ><img src="assets/edit32.png" alt="edit"></button>
+                      <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
                   </td>
               </tr>
               <tr>
-                <td><input type="checkbox" class="row-checkbox"></td>
+                <td><label><input type="checkbox" class="row-checkbox"> </label></td>
                 <td>KN-22</td>
                 <td>Ann Clerk</td>
                 <td>W</td>
@@ -126,19 +115,55 @@
                     <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
                 </td>
             </tr>
-              <!-- Інші рядки аналогічно -->
+            <tr>
+              <td><label><input type="checkbox" class="row-checkbox"> </label></td>
+              <td>KN-22</td>
+              <td>Ann Clerk</td>
+              <td>W</td>
+              <td>11.03.2001</td>
+              <td><span class="status-active"></span></td>
+              <td class="options" >
+                  <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
+                  <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
+              </td>
+          </tr>
+          <tr>
+            <td><label><input type="checkbox" class="row-checkbox"> </label></td>
+            <td>KN-22</td>
+            <td>Ann Clerk</td>
+            <td>W</td>
+            <td>11.03.2001</td>
+            <td><span class="status-active"></span></td>
+            <td class="options" >
+                <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
+                <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
+            </td>
+        </tr>
+        <tr>
+          <td><label><input type="checkbox" class="row-checkbox"> </label></td>
+          <td>KN-22</td>
+          <td>Ann Clerk</td>
+          <td>W</td>
+          <td>11.03.2001</td>
+          <td><span class="status-active"></span></td>
+          <td class="options" >
+              <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
+              <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
+          </td>
+      </tr>
           </tbody>
           
         </table>
     </div>
 
     <div class="pagination">
-        <button>&lt;</button>
-        <button class="active">1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>&gt;</button>
+      <button class="prev">&lt;</button>
+      <button class="page active">1</button>
+      <button class="page">2</button>
+      <div class="break"></div>
+      <button class="page">3</button>
+      <button class="page">4</button>
+      <button class="next">&gt;</button>
     </div>
 
   </div>
@@ -166,7 +191,6 @@
 
 
 
-<!-- Модальне вікно -->
 <div id="studentModal" class="modal" style="display: none;">
   <div class="modal-content">
     <span class="close" style="float:right">&times;</span>

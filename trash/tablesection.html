@@ -9,7 +9,7 @@
     }
 
     .header {
-      background-color: #e7dde4; /* Сірий фон */
+      background-color:#eaeaea; /* Сірий фон */
       color: white;
       display: flex;
       justify-content: space-between;
@@ -456,13 +456,20 @@ th {
 .modal-buttons button:hover {
     background-color: #999;
 }
-
+@keyframes animate{
+  0%{
+    background-position:0%;
+  }
+  100%{
+    background-position: 400%;
+  }
+}
 </style>
 </head>
 <body>
 
   <div class="header">
-    <div class="header-left">CMS</div>
+    <div class="header-left"><span style=" background:linear-gradient(90deg,#ff0000,#ffff00,#ff00f3,#0033ff,#ff00c4,#ff0000); background-size:400%; word-spacing:5px; -webkit-text-fill-color:transparent; -webkit-background-clip:text; animation:animate 10s linear infinite; ">CMS</span></div>
     <div class="header-right">
       <div class="notification"><img src="assets/alarm.png" class="bell"></div>
       <div class="user-profile">

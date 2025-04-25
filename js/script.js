@@ -1,19 +1,23 @@
 
   document.querySelector('.add-button').addEventListener('click', function () {
+
     document.getElementById('studentModal').style.display = 'flex';
-    document.querySelector('h2').innerText = 'Add student';
+    document.querySelector('h2').innerText = 'Add student ';
     document.getElementById('studentForm').reset();
   });
   
   document.querySelector('.close').addEventListener('click', function () {
+    
     document.getElementById('studentModal').style.display = 'none';
   });
   
   document.getElementById('cancelBtn').addEventListener('click', function () {
+    
     document.getElementById('studentModal').style.display = 'none';
   });
   
   document.getElementById('createBtn').addEventListener('click', function () {
+    
     const group = document.getElementById('group').value;
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
@@ -214,5 +218,38 @@ messageDropdown.addEventListener('mouseleave', hideDropdownM);
           cb.checked = selectAllCheckbox.checked;
       });
   });
+
+  /*end*/
+
+
+  /*edit*/
+      // ✅ Делеговане редагування
+      document.querySelector('#studentsTable tbody').addEventListener('click', function (e) {
+        const editBtn = e.target.closest('.edit-icon');
+        if (editBtn) {
+            const row = editBtn.closest('tr');
+            const checkbox = row.querySelector('.row-checkbox');
+            if (checkbox && checkbox.checked) {
+                // Витягуємо дані з рядка
+                const group = row.cells[1].textContent;
+                const name = row.cells[2].textContent.split(' ');
+                const gender = row.cells[3].textContent;
+                const birthday = row.cells[4].textContent.split('.').reverse().join('-'); // YYYY-MM-DD
+
+                // Заповнюємо форму
+                document.getElementById("group").value = group;
+                document.getElementById("firstName").value = name[0];
+                document.getElementById("lastName").value = name[1];
+                document.getElementById("gender").value = gender === 'M' ? 'Male' : 'Female';
+                document.getElementById("birthday").value = birthday;
+
+                // Змінюємо заголовок
+                document.querySelector('#studentModal h2').textContent = "Edit student";
+
+                // Показуємо модальне вікно
+                document.getElementById("studentModal").style.display = "flex";
+            }
+        }
+    });
 
   /*end*/

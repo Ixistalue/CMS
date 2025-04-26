@@ -1,5 +1,4 @@
-
-  document.querySelector('.add-button').addEventListener('click', function () {
+document.querySelector('.add-button').addEventListener('click', function () {
 
     document.getElementById('studentModal').style.display = 'flex';
     document.querySelector('h2').innerText = 'Add student ';
@@ -63,91 +62,23 @@
 
 
 
-  function toggleMenu() {
-    const sidebar = document.getElementById("sidebar");
-    if (sidebar.style.display === "block") {
-        sidebar.style.display = "none";
-    } else {
-        sidebar.style.display = "block";
-    }
-}
-
-/*Index script end*/
-/*bell scripts from 2.html*/
-function animateBell() {
-    const bell = document.getElementById("bell");
-    const notification = document.getElementById("notification");
-    const bellSound = document.getElementById("bell-sound");
-
-    // Приховати кружечок (через додання класу)
-    notification.classList.add("hide-badge");
-
-    // Запуск анімації дзвіночка
-    bell.classList.remove("shake");
-    void bell.offsetWidth; // перезапуск
-    bell.classList.add("shake");
-
-    // Відтворення звуку
-    bellSound.play();
-
-    // Повернути кружечок через 4 секунди
-    setTimeout(() => {
-      notification.classList.remove("hide-badge");
-    }, 4000);
-  }
 
 
 
 
-  /*header improvements*/
-  /*start*/
-const profileArea = document.getElementById('profileArea');
-const profileDropdown = document.getElementById('profileDropdown');
 
-let hideTimeout;
 
-function showDropdown() {
-  clearTimeout(hideTimeout);
-  profileDropdown.style.display = 'block';
-}
 
-function hideDropdown() {
-  hideTimeout = setTimeout(() => {
-    profileDropdown.style.display = 'none';
-  }, 300);
-}
 
-// Коли курсор заходить на область профілю або на меню
-profileArea.addEventListener('mouseenter', showDropdown);
-profileDropdown.addEventListener('mouseenter', showDropdown);
 
-// Коли курсор виходить з обох — запускається таймер
-profileArea.addEventListener('mouseleave', hideDropdown);
-profileDropdown.addEventListener('mouseleave', hideDropdown);
+  
 
-const messageArea = document.getElementById('notification');
-const messageDropdown = document.getElementById('messageDropdown');
 
-let hideTimeout2;
 
-function showDropdownM() {
-  clearTimeout(hideTimeout2);
-  messageDropdown.style.display = 'block';
-}
 
-function hideDropdownM() {
-  hideTimeout2 = setTimeout(() => {
-    messageDropdown.style.display = 'none';
-  }, 300);
-}
 
-// Коли курсор заходить на область профілю або на меню
-messageArea.addEventListener('mouseenter', showDropdownM);
-messageDropdown.addEventListener('mouseenter', showDropdownM);
 
-// Коли курсор виходить з обох — запускається таймер
-messageArea.addEventListener('mouseleave', hideDropdownM);
-messageDropdown.addEventListener('mouseleave', hideDropdownM);
+
 
   /*end*/
 

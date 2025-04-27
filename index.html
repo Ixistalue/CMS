@@ -1,235 +1,250 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Офіційний вебсайт додатка з найновішими функціями." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta name="description" content="PVI lab" >
   <title>CMS</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
 
   <div class="header">
-    <div class="header-left">CMS</div>
+    <div class="header-left"><a href="index.html">CMS</a></div>
     <div class="header-right">
       <div class="notification" ondblclick="animateBell()" id="notification">
         <img src="assets/alarm.png" class="bell" id="bell" alt="bell">
-        <audio id="bell-sound" src="assets/bell-sound.mp3"></audio> 
+        <audio id="bell-sound" src="assets/bell-sound.mp3"></audio>
       </div>
 
       <div class="notification-dropdown" id="messageDropdown">
-        <div class="notification-item" style="margin-top:10px;">
+        <div class="notification-item">
           <div class="notif-user">
             <img src="assets/user_icon.jpg" class="notif-avatar" alt="user">
             <div class="notif-name">Admin</div>
           </div>
-          <div class="notif-text">We live on the most beautiful planet, Earth which has very clean and attractive nature full of greenery.</div>
+          <div class="notif-text">We live on the most beautiful planet, Earth which has very clean and
+            attractive nature full of greenery.</div>
         </div>
         <div class="notification-item">
           <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar" alt="bell">
-            <div class="notif-name" style="color:black;">John K.</div>
+            <img src="assets/user_icon.jpg" class="notif-avatar" alt="user">
+            <div class="notif-name">John K.</div>
           </div>
-          <div class="notif-text"> Nature is our best friend which provides us all the resources to live here </div>
+          <div class="notif-text"> Nature is our best friend which provides us all the resources to live here
+          </div>
         </div>
         <div class="notification-item">
           <div class="notif-user">
-            <img src="assets/user_icon.jpg" class="notif-avatar" alt="bell">
+            <img src="assets/user_icon.jpg" class="notif-avatar" alt="user">
             <div class="notif-name">Ann S.</div>
           </div>
-          <div class="notif-text"> It gives us water to drink, pure air to breathe, food to eat, land to stay, animals, plants for our other uses, etc for our betterment</div>
+          <div class="notif-text"> It gives us water to drink, pure air to breathe, food to eat, land to stay,
+            animals, plants for our other uses, etc for our betterment</div>
         </div>
       </div>
 
 
       <div class="user-profile" id="profileArea">
         <div class="avatar"><img src="assets/user_icon.jpg" class="avatar_icon" alt="avatar"> </div>
-        <div>James Bond</div>
+        <div class="user-name">James Bond</div>
 
-        
+
         <div class="profile-dropdown" id="profileDropdown">
           <div class="dropdown-item"><a href="">Profile</a></div>
           <div class="dropdown-item"><a href="">Log Out</a></div>
-      </div>
+        </div>
       </div>
     </div>
   </div>
 
 
 
-<div class="main-container" style="display:flex"> 
-<div class="left-menu" style="flex:15%">
-  <div class="sidebar" id="sidebar">
-    <nav>
-    <ul>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="index.html" class="active"><b>Students</b></a></li>
-        <li><a href="tasks.html">Tasks</a></li>
-        </ul>
-      </nav>
-  </div>
-  <div class="burger-menu" >
-    <button class="burger-btn" onclick="toggleMenu()">☰</button>
-  </div>
+  <div class="main-container">
+    <div class="left-menu">
+      <div class="sidebar" id="sidebar">
+        <nav>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="index.html" class="active"><b>Students</b></a></li>
+            <li><a href="tasks.html">Tasks</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="burger-menu">
+        <button class="burger-btn" onclick="toggleMenu()">☰</button>
+      </div>
 
-</div>
+    </div>
 
-<div class="container" style="flex:85%;justify-content: center; padding-left: 10px;padding-right:10px;">
-  <br><br>
-    <p style="font-size:34px; padding:0px;margin:0px;">Students</p>
-    <button class="add-button"><span style="font-size: 20px;">+</span> </button></button><br><br><br>
-    <div class="table-container">
+    <div class="container">
+      <br><br>
+      <p class="table-name">Students</p>
+      <button class="add-button"><span>+</span> </button><br><br><br>
+      <div class="table-container">
         <table id="studentsTable">
           <thead>
-              <tr>
-                  <th><input type="checkbox" id="selectAll"><label for="selectAll" class="visually-hidden">Select all</label></th>
-                  <th>Group</th>
-                  <th>Name</th>
-                  <th>Gender</th>
-                  <th>Birthday</th>
-                  <th>Status</th>
-                  <th>Options</th>
-              </tr>
+            <tr>
+              <th><input type="checkbox" id="selectAll"><label for="selectAll" class="visually-hidden">Select
+                  all</label></th>
+              <th>Group</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Birthday</th>
+              <th>Status</th>
+              <th>Options</th>
+            </tr>
           </thead>
           <tbody>
-              <tr>
-                <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Вибрати рядок</span> </label></td>
-                  <td>KN-21</td>
-                  <td>John Smith</td>
-                  <td>M</td>
-                  <td>11.05.2004</td>
-                  <td><span class="status-active"></span></td>
-                  <td class="options" >
-                      <button class="edit-icon" ><img src="assets/edit32.png" alt="edit"></button>
-                      <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
-                  </td>
-              </tr>
-              <tr>
-                <td><label><input type="checkbox" class="row-checkbox"> <span class="visually-hidden">Вибрати рядок</span></label></td>
-                <td>KN-22</td>
-                <td>Ann Clerk</td>
-                <td>W</td>
-                <td>11.03.2001</td>
-                <td><span class="status-active"></span></td>
-                <td class="options" >
-                    <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
-                    <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
-                </td>
+            <tr>
+              <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
+                </label></td>
+              <td>KN-21</td>
+              <td>John Smith</td>
+              <td>M</td>
+              <td>11.05.2004</td>
+              <td><span class="status-active"></span></td>
+              <td class="options">
+                <button class="edit-icon"><img src="assets/edit32.png" alt="edit"></button>
+                <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
+              </td>
             </tr>
             <tr>
-              <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Вибрати рядок</span> </label></td>
+              <td><label><input type="checkbox" class="row-checkbox"> <span class="visually-hidden">Select
+                    row</span></label></td>
               <td>KN-22</td>
               <td>Ann Clerk</td>
-              <td>W</td>
+              <td>F</td>
               <td>11.03.2001</td>
               <td><span class="status-active"></span></td>
-              <td class="options" >
-                  <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
-                  <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
+              <td class="options">
+                <button class="edit-icon"><img src="assets/edit32.png" alt="edit"></button>
+                <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
               </td>
-          </tr>
-          <tr>
-            <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Вибрати рядок</span> </label></td>
-            <td>KN-22</td>
-            <td>Ann Clerk</td>
-            <td>W</td>
-            <td>11.03.2001</td>
-            <td><span class="status-active"></span></td>
-            <td class="options" >
-                <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
-                <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
-            </td>
-        </tr>
-        <tr>
-          <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Вибрати рядок</span> </label></td>
-          <td>KN-22</td>
-          <td>Ann Clerk</td>
-          <td>W</td>
-          <td>11.03.2001</td>
-          <td><span class="status-active"></span></td>
-          <td class="options" >
-              <button class="edit-icon" ><img src="assets/edit32.png" alt="Редагувати"></button>
-              <button class="del-icon"><img src="assets/bin.png" alt="Видалити"></button>
-          </td>
-      </tr>
+            </tr>
+            <tr>
+              <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
+                </label></td>
+              <td>KN-22</td>
+              <td>Alex Johnson</td>
+              <td>M</td>
+              <td>05.12.1995</td>
+              <td><span class="status-active"></span></td>
+              <td class="options">
+                <button class="edit-icon"><img src="assets/edit32.png" alt="edit"></button>
+                <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
+              </td>
+            </tr>
+            <tr>
+              <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
+                </label></td>
+              <td>KN-22</td>
+              <td>Emily Davis</td>
+              <td>F</td>
+              <td>22.09.2000
+              </td>
+              <td><span class="status-active"></span></td>
+              <td class="options">
+                <button class="edit-icon"><img src="assets/edit32.png" alt="edit"></button>
+                <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
+              </td>
+            </tr>
+            <tr>
+              <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
+                </label></td>
+              <td>KN-22</td>
+              <td>Michael Brown</td>
+              <td>M</td>
+              <td>15.07.1998</td>
+              <td><span class="status-inactive"></span></td>
+              <td class="options">
+                <button class="edit-icon"><img src="assets/edit32.png" alt="edit"></button>
+                <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
+              </td>
+            </tr>
           </tbody>
-          
+
         </table>
+      </div>
+
+      <div class="pagination">
+        <button class="prev">&lt;</button>
+        <button class="page active">1</button>
+        <button class="page">2</button>
+        <div class="break"></div>
+        <button class="page">3</button>
+        <button class="page">4</button>
+        <button class="next">&gt;</button>
+      </div>
+
     </div>
 
-    <div class="pagination">
-      <button class="prev">&lt;</button>
-      <button class="page active">1</button>
-      <button class="page">2</button>
-      <div class="break"></div>
-      <button class="page">3</button>
-      <button class="page">4</button>
-      <button class="next">&gt;</button>
-    </div>
 
   </div>
 
 
-  </div>
 
 
-</div>
-</div>
+  <div id="confirmModal" class="modal-delete">
+    <div class="modal-content-delete">
+      <span class="close-button" >&times;</span>
+      <h2 style="text-align:left;">Warning</h2>
 
-<div id="confirmModal" class="modal" >
-  <div class="modal-content">
-    <span class="close-button" style="float:right">&times;</span>
-    <h2 style="text-align:left;">Warning</h2>
-    
-    <p id="confirmText">Are you sure you want to delete user?</p>
-    <div class="modal-buttons">
-      <button id="confirmCancel">Cancel</button>
-      <button id="confirmOk">OK</button>
-      
+      <p id="confirmText">Are you sure you want to delete user?</p>
+      <div class="modal-buttons">
+        <button id="confirmCancel" class="confirmCancel">Cancel</button>
+        <button id="confirmOk" class="confirmOk">OK</button>
+
+      </div>
     </div>
   </div>
-</div>
 
 
 
-<div id="studentModal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close" style="float:right">&times;</span>
-    <h2>Add student</h2>
-    <form id="studentForm">
-      <label>Group
-        <select id="group">
-          <option value="">Select Group</option>
-          <option value="Group A">KN-21</option>
-          <option value="Group B">KN-22</option>
-        </select>
-      </label><br>
-      <label>First name
-        <input type="text" id="firstName">
-      </label><br>
-      <label>Last name
-        <input type="text" id="lastName">
-      </label><br>
-      <label>Gender
-        <select id="gender">
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </label><br>
-      <label>Birthday
-        <input type="date" id="birthday">
-      </label><br><br>
+  <div id="studentModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" >&times;</span>
+      <h2>Add student</h2>
+      <form id="studentForm">
+        <label>Group
+          <select id="group">
+            <option class="disabled-option" value="" disabled selected hidden>Select Group</option>
+            <option value="KN-21">KN-21</option>
+            <option value="KN-22">KN-22</option>
+          </select>
+        </label><br>
+        <label>First name
+          <input type="text" id="firstName">
+        </label><br>
+        <label>Last name
+          <input type="text" id="lastName">
+        </label><br>
+        <label>Gender
+          <select id="gender">
+            <option class="disabled-option" value="" disabled selected hidden>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </label><br>
+        <label>Birthday
+          <input type="date" id="birthday">
+        </label><br><br>
+        <div class="modal-add-buttons">
+          <button type="button" id="cancelBtn">Cancel</button>
+          <button type="button" id="createBtn">Create</button>
 
-      <button type="button" id="cancelBtn">Cancel</button>
-      <button type="button" id="createBtn">Create</button>
-    </form>
+        </div>
+
+      </form>
+    </div>
   </div>
-</div>
 
 
-<script src="js/main.js"></script>
-<script src="js/students.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/students.js"></script>
 </body>
+
 </html>

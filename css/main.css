@@ -4,10 +4,13 @@ body {
     background-color: white;
     font-family: sans-serif;
 }
-
+.header a{
+    text-decoration: none;
+    color: #57340e;
+}
 .header {
-    background-color: #f4e0cf;
-    color: white;
+    background-color:#f6dcc3;;
+    color: #57340e;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -133,7 +136,6 @@ body {
         background-color: #f8f9fa;
         width: 200px;
         height: 100vh;
-        top: 1000;
         left: 0;
         z-index: 998;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
@@ -141,6 +143,10 @@ body {
 
     .burger-btn {
         top: 50px;
+        display: block;
+    }
+    .sidebar.open {
+        left: 0;
         display: block;
     }
 }
@@ -312,7 +318,7 @@ body {
     width: 200px;
     display: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
+    z-index: 1000;
     border-radius: 4px;
     padding: 10px;
 }
@@ -350,7 +356,7 @@ body {
     width: 300px;
     display: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
+    z-index: 1000;
     border-radius: 4px;
     padding: 10px;
 }

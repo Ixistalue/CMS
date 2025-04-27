@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMS</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-left"><a href="index.html">CMS</a></div>
+        <div class="header-right">
+            <div class="notification" ondblclick="animateBell()" id="notification">
+                <img src="assets/alarm.png" class="bell" id="bell" alt="bell">
+                <audio id="bell-sound" src="assets/bell-sound.mp3"></audio>
+            </div>
+
+            <div class="notification-dropdown" id="messageDropdown">
+                <div class="notification-item">
+                    <div class="notif-user">
+                        <img src="assets/user_icon.jpg" class="notif-avatar" alt="user">
+                        <div class="notif-name">Admin</div>
+                    </div>
+                    <div class="notif-text">We live on the most beautiful planet, Earth which has very clean and
+                        attractive nature full of greenery.</div>
+                </div>
+                <div class="notification-item">
+                    <div class="notif-user">
+                        <img src="assets/user_icon.jpg" class="notif-avatar" alt="bell">
+                        <div class="notif-name">John K.</div>
+                    </div>
+                    <div class="notif-text"> Nature is our best friend which provides us all the resources to live here
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notif-user">
+                        <img src="assets/user_icon.jpg" class="notif-avatar" alt="bell">
+                        <div class="notif-name">Ann S.</div>
+                    </div>
+                    <div class="notif-text"> It gives us water to drink, pure air to breathe, food to eat, land to stay,
+                        animals, plants for our other uses, etc for our betterment</div>
+                </div>
+            </div>
+
+
+            <div class="user-profile" id="profileArea">
+                <div class="avatar"><img src="assets/user_icon.jpg" class="avatar_icon" alt="avatar"> </div>
+                <div class="user-name">James Bond</div>
+
+
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="dropdown-item"><a href="">Profile</a></div>
+                    <div class="dropdown-item"><a href="">Log Out</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="main-container">
+        <div class="left-menu">
+            <div class="sidebar" id="sidebar">
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html" >Dashboard</a></li>
+                        <li><a href="index.html">Students</a></li>
+                        <li><a href="tasks.html" class="active"><b>Tasks</b></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="burger-menu">
+                <button class="burger-btn" onclick="toggleMenu()">☰</button>
+            </div>
+
+        </div>
+
+        <div class="container"></div>
+
+
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

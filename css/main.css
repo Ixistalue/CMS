@@ -34,16 +34,7 @@ body {
     cursor: pointer;
 }
 
-.notification::after {
-    content: "";
-    position: absolute;
-    top: 6px;
-    right: 7px;
-    width: 10px;
-    height: 10px;
-    background-color: orange;
-    border-radius: 50%;
-}
+
 
 .user-profile {
     display: flex;
@@ -289,19 +280,7 @@ body {
     }
 }
 
-.badge::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background: yellow;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: ping 1.5s infinite;
-    z-index: -1;
-}
+
 
 .hide-badge::after {
     display: none;

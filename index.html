@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-  <meta name="description" content="PVI lab" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PVI lab">
   <title>CMS</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/main.css">
@@ -99,7 +99,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr id="1">
               <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
                 </label></td>
               <td>KN-21</td>
@@ -112,7 +112,7 @@
                 <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
               </td>
             </tr>
-            <tr>
+            <tr id="2">
               <td><label><input type="checkbox" class="row-checkbox"> <span class="visually-hidden">Select
                     row</span></label></td>
               <td>KN-22</td>
@@ -125,7 +125,7 @@
                 <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
               </td>
             </tr>
-            <tr>
+            <tr id="3">
               <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
                 </label></td>
               <td>KN-22</td>
@@ -138,21 +138,20 @@
                 <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
               </td>
             </tr>
-            <tr>
+            <tr id="4">
               <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
                 </label></td>
               <td>KN-22</td>
               <td>Emily Davis</td>
               <td>F</td>
-              <td>22.09.2000
-              </td>
+              <td>22.09.2000</td>
               <td><span class="status-active"></span></td>
               <td class="options">
                 <button class="edit-icon"><img src="assets/edit32.png" alt="edit"></button>
                 <button class="del-icon"><img src="assets/bin.png" alt="delete"></button>
               </td>
             </tr>
-            <tr>
+            <tr id="5">
               <td><label><input type="checkbox" class="row-checkbox"><span class="visually-hidden">Select row</span>
                 </label></td>
               <td>KN-22</td>
@@ -188,9 +187,9 @@
 
 
 
-  <div id="confirmModal" class="modal-delete" >
+  <div id="confirmModal" class="modal-delete">
     <div class="modal-content-delete">
-      <span class="close-button" >&times;</span>
+      <span class="close-button">&times;</span>
       <h2 style="text-align:left;">Warning</h2>
 
       <p id="confirmText">Are you sure you want to delete user?</p>
@@ -204,37 +203,59 @@
 
 
 
-  <div id="studentModal" class="modal" >
+  <div id="studentModal" class="modal">
     <div class="modal-content">
-      <span class="close" >&times;</span>
+      <span class="close">&times;</span>
       <h2>Add student</h2>
       <form id="studentForm">
+        <input type="hidden" id="studentId">
+        <div class="form-group"> 
         <label>Group
           <select id="group">
             <option class="disabled-option" value="" disabled selected hidden>Select Group</option>
             <option value="KN-21">KN-21</option>
             <option value="KN-22">KN-22</option>
           </select>
-        </label><br>
-        <label>First name
-          <input type="text" id="firstName">
-        </label><br>
-        <label>Last name
-          <input type="text" id="lastName">
-        </label><br>
-        <label>Gender
-          <select id="gender">
-            <option class="disabled-option" value="" disabled selected hidden>Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </label><br>
-        <label>Birthday
-          <input type="date" id="birthday">
-        </label><br><br>
+        </label>
+        <div class="error-message" id="groupError"></div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label>First name
+            <input type="text" id="firstName" name="firstName">
+          </label>
+          <div class="error-message" id="firstNameError"></div>
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label>Last name
+            <input type="text" id="lastName" name="lastName">
+          </label>
+          <div class="error-message" id="lastNameError"></div>
+        </div><br>
+        <div class="form-group">
+          <label>Gender
+            <select id="gender">
+              <option class="disabled-option" value="" disabled selected hidden>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </label>
+          <div class="error-message" id="genderError"></div>
+
+        </div>
+
+        <br>
+        <div class="form-group">
+          <label>Birthday
+            <input type="date" id="birthday" name="birthday">
+          </label>
+          <div class="error-message" id="birthdayError"></div>
+        </div><br><br>
         <div class="modal-add-buttons">
           <button type="button" id="cancelBtn">Cancel</button>
-          <button type="button" id="createBtn">Create</button>
+          <button type="submit" id="createBtn">Create</button>
 
         </div>
 
@@ -245,6 +266,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/students.js"></script>
+
 </body>
 
 </html>

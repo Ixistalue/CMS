@@ -123,6 +123,35 @@ form label input[type="date"] {
 #createBtn:hover {
   background-color: #0056b3;
 }
+/*VALIDTION TYLES*/
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.error {
+  border-color: #e74c3c !important;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  position: absolute;
+  left: 0;
+  bottom: -18px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.error-message.show {
+  opacity: 1;
+}
 
 
 /*TABLE STYLES*/
@@ -362,3 +391,6 @@ th {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Form Validation</title>
+<style>
+  .error {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+  }
+  .success {
+    border: 2px solid green;
+    background-color: #e6ffe6;
+  }
+  .error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+
+<body>
+
+<form id="studentForm" novalidate>
+  <label>Group
+    <select id="group" required>
+      <option class="disabled-option" value="" disabled selected hidden>Select Group</option>
+      <option value="KN-21">KN-21</option>
+      <option value="KN-22">KN-22</option>
+    </select>
+  </label><br>
+
+  <label>First name
+    <input type="text" id="firstName" required pattern="[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]{2,20}">
+  </label><br>
+
+  <label>Last name
+    <input type="text" id="lastName" required pattern="[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]{2,20}">
+  </label><br>
+
+  <label>Gender
+    <select id="gender" required>
+      <option class="disabled-option" value="" disabled selected hidden>Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </label><br>
+
+  <label>Birthday
+    <input type="date" id="birthday" required max="2024-12-31">
+  </label><br><br>
+
+  <div id="errorContainer" class="error-message"></div>
+
+  <div class="modal-add-buttons">
+    <button type="button" id="cancelBtn">Cancel</button>
+    <button type="button" id="createBtn">Create</button>
+  </div>
+</form>
+
+<script>
+document.getElementById("createBtn").addEventListener("click", function() {
+  const group = document.getElementById("group");
+  const firstName = document.getElementById("firstName");
+  const lastName = document.getElementById("lastName");
+  const gender = document.getElementById("gender");
+  const birthday = document.getElementById("birthday");
+  const errorContainer = document.getElementById("errorContainer");
+
+  let isValid = true;
+  let errors = [];
+
+  // Очистити попереднє підсвічування
+  [group, firstName, lastName, gender, birthday].forEach(el => {
+    el.classList.remove("error", "success");
+  });
+  errorContainer.innerHTML = "";
+
+  // Перевірка групи
+  if (group.value === "") {
+    isValid = false;
+    group.classList.add("error");
+    errors.push("Будь ласка, оберіть групу.");
+  } else {
+    group.classList.add("success");
+  }
+
+  // Перевірка імені
+  const namePattern = /^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]{2,20}$/;
+  if (!namePattern.test(firstName.value.trim())) {
+    isValid = false;
+    firstName.classList.add("error");
+    errors.push("Ім'я повинно містити лише літери (2-20 символів).");
+  } else {
+    firstName.classList.add("success");
+  }
+
+  // Перевірка прізвища
+  if (!namePattern.test(lastName.value.trim())) {
+    isValid = false;
+    lastName.classList.add("error");
+    errors.push("Прізвище повинно містити лише літери (2-20 символів).");
+  } else {
+    lastName.classList.add("success");
+  }
+
+  // Перевірка статі
+  if (gender.value === "") {
+    isValid = false;
+    gender.classList.add("error");
+    errors.push("Будь ласка, оберіть стать.");
+  } else {
+    gender.classList.add("success");
+  }
+
+  // Перевірка дня народження
+  if (!birthday.value) {
+    isValid = false;
+    birthday.classList.add("error");
+    errors.push("Будь ласка, оберіть дату народження.");
+  } else {
+    const birthDate = new Date(birthday.value);
+    const today = new Date();
+    if (birthDate > today) {
+      isValid = false;
+      birthday.classList.add("error");
+      errors.push("Дата народження не може бути в майбутньому.");
+    } else {
+      birthday.classList.add("success");
+    }
+  }
+
+  // Відображення помилок
+  if (!isValid) {
+    errorContainer.innerHTML = errors.join("<br>");
+  } else {
+    alert("Успішно створено студента!");
+    document.getElementById("studentForm").reset();
+    [group, firstName, lastName, gender, birthday].forEach(el => el.classList.remove("success"));
+  }
+});
+
+// Кнопка скасування
+document.getElementById("cancelBtn").addEventListener("click", function() {
+  document.getElementById("studentForm").reset();
+  const fields = [group, firstName, lastName, gender, birthday];
+  fields.forEach(el => el.classList.remove("error", "success"));
+  document.getElementById("errorContainer").innerHTML = "";
+});
+</script>
+
+</body>
+</html>

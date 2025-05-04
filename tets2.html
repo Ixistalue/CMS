@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Форма з валідацією</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    form {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    .error {
+      border-color: #e74c3c;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      font-size: 0.9rem;
+      margin-top: 4px;
+      position: absolute;
+      left: 0;
+      bottom: -18px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .error-message.show {
+      opacity: 1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <form id="myForm" novalidate>
+    <div class="form-group">
+      <label for="name">Ім’я</label>
+      <input type="text" id="name" name="name" required minlength="3">
+      <div class="error-message" id="nameError"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      <div class="error-message" id="emailError"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" name="password" required minlength="6">
+      <div class="error-message" id="passwordError"></div>
+    </div>
+
+    <button type="submit">Надіслати</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('myForm');
+
+const fields = [
+  { id: 'name', errorId: 'nameError', message: 'Введіть ім’я мінімум з 3 символів' },
+  { id: 'email', errorId: 'emailError', message: 'Введіть коректний email' },
+  { id: 'password', errorId: 'passwordError', message: 'Пароль має бути щонайменше 6 символів' }
+];
+
+// Прив’язуємо подію blur до кожного поля
+fields.forEach(({ id, errorId, message }) => {
+  const input = document.getElementById(id);
+  const errorDiv = document.getElementById(errorId);
+
+  input.addEventListener('blur', () => {
+    if (!input.checkValidity()) {
+      input.classList.add('error');
+      errorDiv.textContent = message;
+      errorDiv.classList.add('show');
+    } else {
+      input.classList.remove('error');
+      errorDiv.textContent = '';
+      errorDiv.classList.remove('show');
+    }
+  });
+});
+
+// Перевірка при відправці форми
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  let isValid = true;
+
+  fields.forEach(({ id, errorId, message }) => {
+    const input = document.getElementById(id);
+    const errorDiv = document.getElementById(errorId);
+
+    if (!input.checkValidity()) {
+      input.classList.add('error');
+      errorDiv.textContent = message;
+      errorDiv.classList.add('show');
+      isValid = false;
+    } else {
+      input.classList.remove('error');
+      errorDiv.textContent = '';
+      errorDiv.classList.remove('show');
+    }
+  });
+
+  if (isValid) {
+    alert("Форма успішно надіслана!");
+    form.reset();
+  }
+});
+
+  </script>
+</body>
+</html>

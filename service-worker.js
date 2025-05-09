@@ -1,20 +1,20 @@
 const CACHE_NAME = "pwa-cache-v1";
 const ASSETS = [
-  "/",
-  "/index.html",
-  "/tasks.html",
-  "/dashboard.html",
-  "/css/main.css",
-  "/css/style.css",
-  "/js/main.js",
-  "/js/students.js",
-  "/assets/icon-192x192.png",
-  "/assets/icon-512x512.png",
-  "/assets/user_icon.jpg",
-  "/assets/edit32.png",
-  "/assets/bin.png",
-  "/assets/alarm.png",
-  "/assets/bell-sound.mp3"
+  "./",
+  "./index.html",
+  "./tasks.html",
+  "./dashboard.html",
+  "./css/main.css",
+  "./css/style.css",
+  "./js/main.js",
+  "./js/students.js",
+  "./assets/icon-192x192.png",
+  "./assets/icon-512x512.png",
+  "./assets/user_icon.jpg",
+  "./assets/edit32.png",
+  "./assets/bin.png",
+  "./assets/alarm.png",
+  "./assets/bell-sound.mp3"
 ];
 
 // Встановлення Service Worker та кешування файлів

@@ -145,7 +145,7 @@ const fields = [
   {
     id: 'firstName',
     errorId: 'firstNameError',
-    message: 'Ім’я має містити лише латинські літери (2–40 символів)',
+    message: 'The fist name must contain only Latin letters (2–40 characters)',
     regex: /^[A-Za-z]{2,40}$/
   },
   {
@@ -161,7 +161,7 @@ const fields = [
       const value = document.getElementById('birthday').value;
       if (!value) return false;
       const selectedYear = new Date(value).getFullYear();
-      return selectedYear <= 2009;
+      return selectedYear <= 2009 && selectedYear>=1925;
     },
     message: 'Select a birth date between 1925 and 2009'
   },
@@ -251,6 +251,9 @@ function addStudentToTable(student) {
 
 }
 
+
+
+
 function updateStudentInTable(updatedStudent) {
   let gender = updatedStudent.gender == "Male" ? "M" : "F";
   const row = document.getElementById(updatedStudent.id);
@@ -267,7 +270,7 @@ function updateStudentInTable(updatedStudent) {
   document.getElementById('studentModal').style.display = 'none';
 }
 
-
+/*SUBMIT VALIDATION*/
 document.getElementById('studentForm').addEventListener('submit', (e) => {
   e.preventDefault();
   let formIsValid = true;
